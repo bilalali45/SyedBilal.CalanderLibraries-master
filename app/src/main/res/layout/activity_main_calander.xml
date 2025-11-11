@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+
+<!--    <com.applandeo.materialcalendarview.CalendarView-->
+<!--        android:id="@+id/calendarView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        />-->
+
+
+
+
+    <com.syedbilalali.customcalanderview.CalendarCustomView
+        android:id="@+id/custom_calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+    </com.syedbilalali.customcalanderview.CalendarCustomView>
+
+<!--    <com.syedbilalali.customcalanderview.CalendarCustomView-->
+<!--        android:id="@+id/custom_calendar_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/_10sdp"-->
+<!--        android:layout_marginRight="@dimen/_10sdp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--    </com.syedbilalali.customcalanderview.CalendarCustomView>-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Button"
+        android:id="@+id/btn"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="ButtonOne"
+        android:id="@+id/ccc"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+<!--    <com.syedbilalali.customindicatorseekbar.IndicatorStayLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/custom_calendar_view"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--        &lt;!&ndash;your layout&ndash;&gt;-->
+
+<!--        <com.syedbilalali.customindicatorseekbar.IndicatorSeekBar-->
+<!--            android:id="@+id/percent_indicator"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:isb_indicator_color="@color/blue"-->
+<!--            app:isb_progress="76"-->
+<!--            app:isb_show_indicator="rectangle"-->
+<!--            app:isb_show_tick_texts="true"-->
+<!--            app:isb_tick_texts_color="@color/red"-->
+<!--            app:isb_ticks_count="2" />-->
+
+<!--        &lt;!&ndash;your layout&ndash;&gt;-->
+
+<!--    </com.syedbilalali.customindicatorseekbar.IndicatorStayLayout>-->
+
+
+
+
+</LinearLayout>
