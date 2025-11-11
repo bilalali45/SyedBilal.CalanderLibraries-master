@@ -105,6 +105,9 @@ class CalanderAct : AppCompatActivity() {
 
     }
 
+
+
+
     private var itemClicked: CalanderIItemClicked =
         object : CalanderIItemClicked {
             override fun calanderIItemClicked(firstDate: String?, secondDate: String?, b: Boolean) {
