@@ -13,6 +13,7 @@ android {
 
 
     defaultConfig {
+        applicationId "com.syedbilalali.syedbilallibraries"
 
         minSdk 25
         versionCode 1
