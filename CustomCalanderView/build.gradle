@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -28,6 +29,23 @@ android {
 
     kotlinOptions {
         jvmTarget = '17'
+    }
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.bilalali45'
+                artifactId = 'CustomCalanderView'
+                version = '3.0.5'
+            }
+        }
     }
 }
 
