@@ -80,8 +80,12 @@ class CalanderAct : AppCompatActivity() {
 
 
 
-        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,false,0);
 
+        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,"","",false,0);
+//        itemClicked.calanderIItemClicked(
+//            "12/11/2025","16/11/2025",
+//            false
+//        )
 
         //custom indicator text
 //        val percent_indicator: IndicatorSeekBar =
@@ -120,6 +124,10 @@ class CalanderAct : AppCompatActivity() {
                 }else{
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
+
+
+                  //  mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
+
                     //mView!!.setArrayDataValue(listDaysRate,firstDate,"21/11/2025")
 
                 }

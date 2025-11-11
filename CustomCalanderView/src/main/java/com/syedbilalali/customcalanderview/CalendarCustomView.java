@@ -76,8 +76,8 @@ public class CalendarCustomView extends LinearLayout {
     private String firstDate = "",seconDate = "";
     private long CLICK_DURATION = 400; // TODO: your timeout here
     private String firstDatev1 = "",seconDatev1 = "";
-
-
+    private String dateAfter10Days = "";
+    private  String dates = "";
     private float x1;
     private float y1;
     private float t1;
@@ -101,7 +101,7 @@ public class CalendarCustomView extends LinearLayout {
         setUpCalendarAdapter();
         setPreviousButtonClickEvent();
         setNextButtonClickEvent();
-        setGridCellClickEvents(listDaysRate,itemClicked,false,0);
+        setGridCellClickEvents(listDaysRate,itemClicked,"","",false,0);
         setArrayDataValue(listDaysRate,"","");
         setallevent(allEvents);
         openRangePicker("","", false);
@@ -179,6 +179,15 @@ public class CalendarCustomView extends LinearLayout {
             nextButton.setScaleX(-1f);
         }
     }
+    @SuppressLint("ClickableViewAccessibility")
+    private void listnerCalnder(){
+        View.OnTouchListener gestureListener = new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                return gestureDetector.onTouchEvent(event);
+            }};
+        calendarGridView.setOnTouchListener(gestureListener);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (gestureDetector.onTouchEvent(event)) {
@@ -208,7 +217,7 @@ public class CalendarCustomView extends LinearLayout {
         });
     }
 
-    public void setGridCellClickEvents(ArrayList<EventObjectsTime> listDaysRateV1, CalanderIItemClicked itemClicked,Boolean status,int data){
+    public void setGridCellClickEvents(ArrayList<EventObjectsTime> listDaysRateV1, CalanderIItemClicked itemClicked,String Firstdate ,String lastDate ,Boolean status,int data){
         calendarGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -225,13 +234,13 @@ public class CalendarCustomView extends LinearLayout {
                 SimpleDateFormat formatterdate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                  Calendar cal1 = Calendar.getInstance();
                 cal1.setTime(dayValueData.get(position).getDate());
-                String dates = formatterdate.format(cal1.getTime());
+                dates = formatterdate.format(cal1.getTime());
                 String currentdate = formatterdate.format(cal_first.getTime());
                 int viewdates = getDateCheck(currentdate,dates);
 
 
                 Calendar calAfter10Days = (Calendar) cal_first.clone(); // clone taake original na badle
-                calAfter10Days.add(Calendar.DAY_OF_MONTH, 10); // 10 din add karo
+                calAfter10Days.add(Calendar.DAY_OF_MONTH, data); // 10 din add karo
                 String dateAfter10Days = formatterdate.format(calAfter10Days.getTime());
                   if(viewdates != 0) {
                       int values = getDateCheck(firstDate, dates);
@@ -239,13 +248,13 @@ public class CalendarCustomView extends LinearLayout {
                       if (firstDate.equals(dates)){
                           values = 0;
                       }
-                      if(!firstDate.equals("") && status) {
+                      if(!firstDate.equals("") &&status) {
                         //  firstDate = currentdate;
                           seconDate = dateAfter10Days;
                           firstDate = dates;
                           firstDatev1 = firstDate;
                           seconDatev1 = seconDate  ;
-                          itemClicked.calanderIItemClicked(firstDate, seconDate, false);
+                          //itemClicked.calanderIItemClicked(firstDate, seconDate, false);
                           firstDate = "";
                           seconDate = "";
                       }else if (values == 1) {
@@ -274,6 +283,18 @@ public class CalendarCustomView extends LinearLayout {
                   }
             }
         });
+
+        if(status) {
+            //  firstDate = currentdate;
+            seconDate = lastDate;
+            firstDate = Firstdate;
+            firstDatev1 = firstDate;
+            seconDatev1 = seconDate  ;
+            //itemClicked.calanderIItemClicked(firstDate, seconDate, false);
+            firstDate = "";
+            seconDate = "";
+          //  itemClicked.calanderIItemClicked(firstDate, firstDate, false);
+        }
     }
 
     public void setUpCalendarAdapter(){
