@@ -248,13 +248,13 @@ public class CalendarCustomView extends LinearLayout {
                       if (firstDate.equals(dates)){
                           values = 0;
                       }
-                      if(!firstDate.equals("") &&status) {
+                      if(status) {
                         //  firstDate = currentdate;
                           seconDate = dateAfter10Days;
                           firstDate = dates;
                           firstDatev1 = firstDate;
                           seconDatev1 = seconDate  ;
-                          //itemClicked.calanderIItemClicked(firstDate, seconDate, false);
+                          itemClicked.calanderIItemClicked(firstDate, seconDate, false);
                           firstDate = "";
                           seconDate = "";
                       }else if (values == 1) {
@@ -264,6 +264,7 @@ public class CalendarCustomView extends LinearLayout {
                           itemClicked.calanderIItemClicked(firstDate, seconDate, true);
                           firstDate = "";
                           seconDate = "";
+
                       } else {
                           if (listDaysRate != null)
                               listDaysRate.clear();
