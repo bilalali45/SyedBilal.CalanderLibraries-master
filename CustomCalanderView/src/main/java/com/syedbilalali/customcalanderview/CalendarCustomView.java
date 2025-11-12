@@ -217,6 +217,26 @@ public class CalendarCustomView extends LinearLayout {
         });
     }
 
+    public static String date10(String args, int data) {
+        try {
+            String inputDate = args; // original date
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+            Date date = sdf.parse(inputDate); // string ko Date me convert karo
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_MONTH, data); // 10 din add kar do
+
+            String newDate = sdf.format(calendar.getTime()); // wapas string me convert karo
+
+            System.out.println("10 din baad ki date: " + newDate);
+            return newDate;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return args;
+    }
     public void setGridCellClickEvents(ArrayList<EventObjectsTime> listDaysRateV1, CalanderIItemClicked itemClicked,String Firstdate ,String lastDate ,Boolean status,int data){
         calendarGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -239,9 +259,7 @@ public class CalendarCustomView extends LinearLayout {
                 int viewdates = getDateCheck(currentdate,dates);
 
 
-                Calendar calAfter10Days = (Calendar) cal_first.clone(); // clone taake original na badle
-                calAfter10Days.add(Calendar.DAY_OF_MONTH, data); // 10 din add karo
-                String dateAfter10Days = formatterdate.format(calAfter10Days.getTime());
+
                   if(viewdates != 0) {
                       int values = getDateCheck(firstDate, dates);
                       Log.d(TAG, "onItemClick: " + values);
@@ -249,6 +267,8 @@ public class CalendarCustomView extends LinearLayout {
                           values = 0;
                       }
                       if(status) {
+
+                          dateAfter10Days = date10(dates,data);
                         //  firstDate = currentdate;
                           seconDate = dateAfter10Days;
                           firstDate = dates;
