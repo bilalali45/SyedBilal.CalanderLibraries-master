@@ -43,7 +43,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.bilalali45'
                 artifactId = 'CustomCalanderView'
-                version = '3.0.7'
+                version = '3.0.8'
             }
         }
     }
