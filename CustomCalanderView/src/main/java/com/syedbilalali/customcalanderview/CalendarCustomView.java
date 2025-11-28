@@ -346,9 +346,9 @@ public class CalendarCustomView extends LinearLayout {
 
 
 
-            if(allEvents.size() > 2){
+            if(allEvents.size() >= 2){
                 openRangePicker(firstDatev1,seconDatev1,false);
-                //mAdapter.update(allEvents,firstDate,seconDate,allEvents,listDaysRate, dayValueData);
+              // mAdapter.update(allEvents,firstDate,seconDate,allEvents,listDaysRate, dayValueData);
             }
 
 

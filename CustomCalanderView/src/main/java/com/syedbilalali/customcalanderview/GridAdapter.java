@@ -121,7 +121,7 @@ public class GridAdapter extends ArrayAdapter  {
 
             cellNumber.setText(String.valueOf(numberFormat.format(dayValue)));
 
-              lv = (RelativeLayout)view.findViewById(R.id.event_wrapper);
+             lv = (RelativeLayout)view.findViewById(R.id.event_wrapper);
              maincell = (LinearLayout)view.findViewById(R.id.lir);
 
 
