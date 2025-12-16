@@ -54,32 +54,72 @@ class CalanderAct : AppCompatActivity() {
             //openRangePicker("15/01/2023","23/02/2023")
             listDaysRate.clear()
 
-            val startDate = Calendar.getInstance()
-            val formatterdate = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-            startDate.time = formatterdate.parse("16/12/2025")
+//            val startDate = Calendar.getInstance()
+//            val formatterdate = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+//            startDate.time = formatterdate.parse("16/12/2025")
+//
+//            val endDate = Calendar.getInstance()
+//            val formatterdatev1 = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+//            endDate.time = formatterdatev1.parse("20/12/2025")
+//
+//            var dayName = EventObjectsTime()
+//            dayName.dayname = "Tuesday"
+//            dayName.rates = "19.0"
+//            dayName.date = startDate.time
+//
+//            listDaysRate.add(dayName)
+//
+//            var dayName1 = EventObjectsTime()
+//            dayName1.dayname = "Wednesday"
+//            dayName1.rates = "21"
+//            dayName1.date = endDate.time
+//            listDaysRate.add(dayName1)
+//
+//            var dayName3 = EventObjectsTime()
+//            dayName3.dayname = "Thursday"
+//            dayName3.rates = "21"
+//            dayName3.date = endDate.time
+//            listDaysRate.add(dayName3)
+//
+//
+//            var dayName4 = EventObjectsTime()
+//            dayName4.dayname = "Friday"
+//            dayName4.rates = "21"
+//            dayName4.date = endDate.time
+//            listDaysRate.add(dayName4)
+//
+//
+//
+//            var dayName5 = EventObjectsTime()
+//            dayName5.dayname = "Saturday"
+//            dayName5.rates = "21"
+//            dayName5.date = endDate.time
+//            listDaysRate.add(dayName5)
+//
+//
+//            var dayName6 = EventObjectsTime()
+//            dayName6.dayname = "Sunday"
+//            dayName6.rates = "21"
+//            dayName6.date = endDate.time
+//
+//            listDaysRate.add(dayName6)
+//
+//
+//            var dayName7 = EventObjectsTime()
+//            dayName7.dayname = "Monday"
+//            dayName7.rates = "21"
+//            dayName7.date = endDate.time
+//
+//            listDaysRate.add(dayName7)
+//
+//
+//            var dayName8 = EventObjectsTime()
+//            dayName8.dayname = "Tuesday"
+//            dayName8.rates = "21"
+//            dayName8.date = endDate.time
+//
+//            listDaysRate.add(dayName8)
 
-            val endDate = Calendar.getInstance()
-            val formatterdatev1 = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-            endDate.time = formatterdatev1.parse("20/12/2025")
-
-            var dayName = EventObjectsTime()
-            dayName.dayname = "Tuesday"
-            dayName.rates = "19.0"
-            dayName.date = startDate.time
-
-            listDaysRate.add(dayName)
-
-            var dayName1 = EventObjectsTime()
-            dayName1.dayname = "Wednesday"
-            dayName1.rates = "21"
-            dayName1.date = endDate.time
-
-            var dayName3 = EventObjectsTime()
-            dayName3.dayname = "Thursday"
-            dayName3.rates = "21"
-            dayName3.date = endDate.time
-            listDaysRate.add(dayName3)
-            listDaysRate.add(dayName1)
 
         }
 
@@ -124,6 +164,75 @@ class CalanderAct : AppCompatActivity() {
                 if(b){
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
+
+                    val startDate = Calendar.getInstance()
+                    val formatterdate = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                    startDate.time = formatterdate.parse(firstdate)
+
+                    val endDate = Calendar.getInstance()
+                    val formatterdatev1 = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                    endDate.time = formatterdatev1.parse(seconddate)
+
+                    var dayName = EventObjectsTime()
+                    dayName.dayname = "Tuesday"
+                    dayName.rates = "19.0"
+                    dayName.date = startDate.time
+
+                    listDaysRate.add(dayName)
+
+                    var dayName1 = EventObjectsTime()
+                    dayName1.dayname = "Wednesday"
+                    dayName1.rates = "21"
+                    dayName1.date = endDate.time
+                    listDaysRate.add(dayName1)
+
+                    var dayName3 = EventObjectsTime()
+                    dayName3.dayname = "Thursday"
+                    dayName3.rates = "21"
+                    dayName3.date = endDate.time
+                    listDaysRate.add(dayName3)
+
+
+                    var dayName4 = EventObjectsTime()
+                    dayName4.dayname = "Friday"
+                    dayName4.rates = "21"
+                    dayName4.date = endDate.time
+                    listDaysRate.add(dayName4)
+
+
+
+                    var dayName5 = EventObjectsTime()
+                    dayName5.dayname = "Saturday"
+                    dayName5.rates = "21"
+                    dayName5.date = endDate.time
+                    listDaysRate.add(dayName5)
+
+
+                    var dayName6 = EventObjectsTime()
+                    dayName6.dayname = "Sunday"
+                    dayName6.rates = "21"
+                    dayName6.date = endDate.time
+
+                    listDaysRate.add(dayName6)
+
+
+                    var dayName7 = EventObjectsTime()
+                    dayName7.dayname = "Monday"
+                    dayName7.rates = "21"
+                    dayName7.date = endDate.time
+
+                    listDaysRate.add(dayName7)
+
+
+                    var dayName8 = EventObjectsTime()
+                    dayName8.dayname = "Tuesday"
+                    dayName8.rates = "21"
+                    dayName8.date = endDate.time
+
+                    listDaysRate.add(dayName8)
+
+
+
                     mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true)
 
                 }else{

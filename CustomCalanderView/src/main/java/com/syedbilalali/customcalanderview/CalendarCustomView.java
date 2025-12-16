@@ -445,6 +445,8 @@ public class CalendarCustomView extends LinearLayout {
                             eventObjectsSecond.setDate(dayValueData.get(j).getDate());
                             eventObjectsSecond.setMessage(listDaysRate.get(k).getRates());
                             eventObjectsSecond.setDescount(listDaysRate.get(k).getDescount());
+                            eventObjectsSecond.setDisabled(dayValueData.get(j).isDisabled());
+                            eventObjectsSecond.setOtherMonth(dayValueData.get(j).isOtherMonth());
                             dayValueData.set(j,eventObjectsSecond);
                             break;
                         }
