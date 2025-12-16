@@ -5,6 +5,15 @@ import java.util.Date;
 public class EventObjectsSecond {
     public int id;
 
+    public boolean isDisabled() {
+        return Disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        Disabled = disabled;
+    }
+
+    public boolean Disabled;
     public int getDescount() {
         return descount;
     }
@@ -38,5 +47,15 @@ public class EventObjectsSecond {
     }
     public Date getDate() {
         return date;
+    }
+
+    private boolean isOtherMonth;
+
+    public boolean isOtherMonth() {
+        return isOtherMonth;
+    }
+
+    public void setOtherMonth(boolean otherMonth) {
+        isOtherMonth = otherMonth;
     }
 }

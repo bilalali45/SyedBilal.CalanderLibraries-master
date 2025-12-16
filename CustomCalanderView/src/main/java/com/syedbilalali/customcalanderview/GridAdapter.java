@@ -133,16 +133,25 @@ public class GridAdapter extends ArrayAdapter  {
             calanderrate.setVisibility(View.GONE);
 
 
-            Calendar cal = Calendar.getInstance();
-            final int currentMonthcal = cal.get(Calendar.MONTH) + 1;
-            final int currentdascal = cal.get(Calendar.DAY_OF_MONTH);
-            final int currentyearv1 = cal.get(Calendar.YEAR);
+            if (mDate.isOtherMonth() || mDate.isDisabled()) {
+                cellNumber.setTextColor(
+                        ContextCompat.getColor(getContext(), R.color.lightgrey)
+                );
+                cellNumber.setBackgroundColor(Color.TRANSPARENT);
+                cellNumber.setVisibility(View.GONE);
+               // return convertView;
+            }else {
+
+                Calendar cal = Calendar.getInstance();
+                final int currentMonthcal = cal.get(Calendar.MONTH) + 1;
+                final int currentdascal = cal.get(Calendar.DAY_OF_MONTH);
+                final int currentyearv1 = cal.get(Calendar.YEAR);
 
 
 
-            if (displayMonth == currentMonth && displayYear == currentyearv1) {
-                if(displayMonth >= currentMonthcal) {
-                    if (dayValue >= currentdascal || displayMonth > currentMonthcal) {
+                if (displayMonth == currentMonth && displayYear == currentyearv1) {
+                    if(displayMonth >= currentMonthcal) {
+                        if (dayValue >= currentdascal || displayMonth > currentMonthcal) {
 
                             if (dayValue <= currentdascal && displayMonth == currentMonthcal) {
                                 cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.colorOrange));
@@ -228,7 +237,7 @@ public class GridAdapter extends ArrayAdapter  {
                                             } else {
                                                 maincell.setBackgroundResource(R.drawable.cellrightv1);
                                             }
-
+//
 
                                         }
 
@@ -258,120 +267,131 @@ public class GridAdapter extends ArrayAdapter  {
 
 
                         }else {
-                                cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
-                        }
-
-                        } else {
                             cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
                         }
 
+                    } else {
+                        cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+                    }
 
 
-            } else if(displayYear > currentyearv1) {
+
+                } else if(displayYear > currentyearv1) {
+
+                    // cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+
+                    if (eventsFirstLast.size() > 0) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date netDate = null;
+                        try {
 
 
-                        if (eventsFirstLast.size() > 0) {
-                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                            Date netDate = null;
-                            try {
+                            Calendar firstDateCal = Calendar.getInstance();
+                            firstDateCal.setTime(firstDateView);
+                            String day = formatter.format(firstDateCal.getTime());
+                            final int month = firstDateCal.get(Calendar.MONTH) + 1;
 
-
-                                Calendar firstDateCal = Calendar.getInstance();
-                                firstDateCal.setTime(firstDateView);
-                                String day = formatter.format(firstDateCal.getTime());
-                                final int month = firstDateCal.get(Calendar.MONTH) + 1;
-
-                                if (day.equals(sDate) && month == displayMonth) {
-                                    lv.setBackgroundResource(R.drawable.greencircle);
-                                    cellNumber.setTextColor(Color.WHITE);
+                            if (day.equals(sDate) && month == displayMonth) {
+                                lv.setBackgroundResource(R.drawable.greencircle);
+                                cellNumber.setTextColor(Color.WHITE);
 //                                 lv1.setBackgroundColor(Color.GRAY);
 //                                 lv1.setVisibility(View.VISIBLE);
-                                    if (!firstRate.equals("")) {
-                                        calanderrate.setVisibility(View.VISIBLE);
-                                        calanderrate.setText(String.valueOf(numberFormat.format(Double.parseDouble(firstRate))));
-                                        //calanderrate.setText(firstRate);
-                                        calanderrate.setTextColor(Color.WHITE);
-                                    }
+                                if (!firstRate.equals("")) {
+                                    calanderrate.setVisibility(View.VISIBLE);
+                                    calanderrate.setText(String.valueOf(numberFormat.format(Double.parseDouble(firstRate))));
+                                    //calanderrate.setText(firstRate);
+                                    calanderrate.setTextColor(Color.WHITE);
+                                }
 
-                                    if (selectDate) {
-                                        //   if(eventsFirstLast.size() != 1)
-                                        calanderrate.setTextColor(Color.WHITE);
-                                        if (langaugeCode.equals("ar")) {
-                                            maincell.setBackgroundResource(R.drawable.cellleftv12);
+                                if (selectDate) {
+                                    //   if(eventsFirstLast.size() != 1)
+                                    calanderrate.setTextColor(Color.WHITE);
+                                    if (langaugeCode.equals("ar")) {
+                                        maincell.setBackgroundResource(R.drawable.cellleftv12);
 
-                                        } else {
-                                            maincell.setBackgroundResource(R.drawable.cellleftv1);
-
-                                        }
+                                    } else {
+                                        maincell.setBackgroundResource(R.drawable.cellleftv1);
 
                                     }
+
+                                }
 //                                    if (eventsFirstLast.size() > 2) {
 //                                    //maincell.setBackgroundResource(R.drawable.cellleft);
 //                                }
-                                }
+                            }else {
+                                //  cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
 
-
-                            try {
-
-                                Calendar secondDateCal = Calendar.getInstance();
-                                secondDateCal.setTime(secondDateView);
-                                String day = formatter.format(secondDateCal.getTime());
-                                final int month = secondDateCal.get(Calendar.MONTH) + 1;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
 
-                                if (day.equals(sDate) && month == displayMonth) {
+                        try {
+
+                            Calendar secondDateCal = Calendar.getInstance();
+                            secondDateCal.setTime(secondDateView);
+                            String day = formatter.format(secondDateCal.getTime());
+                            final int month = secondDateCal.get(Calendar.MONTH) + 1;
 
 
-                                    if (selectDate) {
-                                        lv.setBackgroundResource(R.drawable.darkcirlceboder);
-                                        cellNumber.setTextColor(Color.BLACK);
-                                    }
+                            if (day.equals(sDate) && month == displayMonth) {
+
+
+                                if (selectDate) {
+                                    lv.setBackgroundResource(R.drawable.darkcirlceboder);
+                                    cellNumber.setTextColor(Color.BLACK);
+                                }
 //                             lv2.setBackgroundColor(Color.GRAY);
 //                             lv2.setVisibility(View.VISIBLE);
-                                    if (!secondRate.equals("")) {
-                                        calanderrate.setVisibility(View.VISIBLE);
-                                        //  calanderrate.setText(secondRate);
-                                        calanderrate.setText(numberFormat.format(Double.parseDouble(secondRate)));
+                                if (!secondRate.equals("")) {
+                                    calanderrate.setVisibility(View.VISIBLE);
+                                    //  calanderrate.setText(secondRate);
+                                    calanderrate.setText(numberFormat.format(Double.parseDouble(secondRate)));
 
+                                }
+                                if (selectDate) {
+                                    //  if(eventsFirstLast.size() != 1)
+                                    if (langaugeCode.equals("ar")) {
+                                        maincell.setBackgroundResource(R.drawable.cellrightv12);
+
+                                    } else {
+                                        maincell.setBackgroundResource(R.drawable.cellrightv1);
                                     }
-                                    if (selectDate) {
-                                        //  if(eventsFirstLast.size() != 1)
-                                        if (langaugeCode.equals("ar")) {
-                                            maincell.setBackgroundResource(R.drawable.cellrightv12);
-
-                                        } else {
-                                            maincell.setBackgroundResource(R.drawable.cellrightv1);
-                                        }
 
 
-                                    }
+                                }
 
 
 //                                if (eventsFirstLast.size() > 2) {
 //                                    maincell.setBackgroundResource(R.drawable.cellrightv1);
 //                                }
-                                }
+                            }else {
+                                //  cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            if (!mDate.getMessage().equals("")) {
-                                calanderrate.setVisibility(View.VISIBLE);
-                                if (mDate.getDescount() < 0) {
-                                    calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
-                                }
-                                calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
                             }
 
-                            if (countValueStatus) {
-                                callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if (!mDate.getMessage().equals("")) {
+                            calanderrate.setVisibility(View.VISIBLE);
+                            if (mDate.getDescount() < 0) {
+                                calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
                             }
+                            calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
                         }
 
+                        if (countValueStatus) {
+
+                            callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate);
+
+                        }
+                    }else {
+                        cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+
+                    }
 
 
 
@@ -380,28 +400,31 @@ public class GridAdapter extends ArrayAdapter  {
 
 
 
-            }else {
 
-                cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+                }else {
 
-            }
+                    cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
 
-            if(previousposition != 0)
-            if(previousposition == position){
-            }
-            else
-            {
-                cellNumber.setBackgroundResource(R.drawable.blankcircel);
-            }
+                }
+
+                if(previousposition != 0)
+                    if(previousposition == position){
+                    }
+                    else
+                    {
+                        cellNumber.setBackgroundResource(R.drawable.blankcircel);
+                    }
 
 
 
-            if(displayMonth == monthcur) {
-                if (dayValue == currentdas) {
-                    cellNumber.setBackgroundResource(R.drawable.greencircle);
-                     cellNumber.setTextColor(Color.GREEN);
+                if(displayMonth == monthcur) {
+                    if (dayValue == currentdas) {
+                        cellNumber.setBackgroundResource(R.drawable.greencircle);
+                        cellNumber.setTextColor(Color.GREEN);
+                    }
                 }
             }
+
 
 
         }catch(NullPointerException e){
@@ -409,6 +432,10 @@ public class GridAdapter extends ArrayAdapter  {
         }
         return view;
     }
+
+
+
+
     public void update(ArrayList<EventObjects> list, String firstdate, String seconddate, ArrayList<EventObjects> eventObjects, ArrayList<EventObjectsTime> listDaysRatev, ArrayList<EventObjectsSecond> dayValueDatav1) {
         countValueStatus = false;
         monthlyDates = dayValueDatav1;

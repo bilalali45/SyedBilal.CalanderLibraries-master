@@ -81,9 +81,9 @@ class CalanderAct : AppCompatActivity() {
 
 
 
-        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,"12/11/2025","16/11/2025",true,5);
+        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,"16/12/2025","20/12/2025",true,5);
         itemClicked.calanderIItemClicked(
-            "12/11/2025","16/11/2025",
+            "16/12/2025","20/12/2025",
             false
         )
 
@@ -119,13 +119,13 @@ class CalanderAct : AppCompatActivity() {
                 if(b){
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
-                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
+                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true)
 
                 }else{
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
 
-                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
+                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true)
 
                   //  mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
 

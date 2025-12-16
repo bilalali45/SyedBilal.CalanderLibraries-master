@@ -71,7 +71,10 @@ public class CalendarCustomView extends LinearLayout {
 
     private ArrayList<EventObjectsTime> listDaysRate = new ArrayList();
 
+  //  private GridAdapter mAdapter;
     private GridAdapter mAdapter;
+
+
     private boolean dateType = false;
     private String firstDate = "",seconDate = "";
     private long CLICK_DURATION = 400; // TODO: your timeout here
@@ -102,7 +105,7 @@ public class CalendarCustomView extends LinearLayout {
         setPreviousButtonClickEvent();
         setNextButtonClickEvent();
         setGridCellClickEvents(listDaysRate,itemClicked,"","",false,0);
-        setArrayDataValue(listDaysRate,"","");
+        setArrayDataValue(listDaysRate,"","",false);
         setallevent(allEvents);
         openRangePicker("","", false);
         setClearAllData();
@@ -130,14 +133,14 @@ public class CalendarCustomView extends LinearLayout {
         openRangePicker("","",false);
     }
 
-    public void setArrayDataValue(ArrayList<EventObjectsTime> listDaysRatev1,String firstdate, String seconddate) {
+    public void setArrayDataValue(ArrayList<EventObjectsTime> listDaysRatev1,String firstdate, String seconddate,Boolean update) {
        if(listDaysRate != null){
            listDaysRate.clear();
        }
         listDaysRate.addAll(listDaysRatev1);
         dateType =false;
         seconDate = seconddate;
-        selectDate = true;
+        selectDate = update;
         selectDateValue = true;
         //  openRangePicker(firstDate,seconDate,true);
         openRangePicker(firstdate,seconddate,true);
@@ -244,64 +247,70 @@ public class CalendarCustomView extends LinearLayout {
                 if(listDaysRate != null){
                     listDaysRate.clear();
                 }
+
                 listDaysRate.addAll(listDaysRateV1);
-                // String current = displayYear+"-"+"0"+currentMonth+"-"+dateno;
-//                Date mDate = monthlyDates.get(position);
-//                Log.i(TAG, "onItemClick: "+mDate.getTime());
-//                String d = String.valueOf(mDate.getTime());
-//                String dates = getDate(d);
 
-                SimpleDateFormat formatterdate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                 Calendar cal1 = Calendar.getInstance();
-                cal1.setTime(dayValueData.get(position).getDate());
-                dates = formatterdate.format(cal1.getTime());
-                String currentdate = formatterdate.format(cal_first.getTime());
-                int viewdates = getDateCheck(currentdate,dates);
+                if(dayValueData.get(position).isOtherMonth() == false && dayValueData.get(position).isDisabled() == false){
+
+                    SimpleDateFormat formatterdate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Calendar cal1 = Calendar.getInstance();
+                    cal1.setTime(dayValueData.get(position).getDate());
+                    dates = formatterdate.format(cal1.getTime());
+                    String currentdate = formatterdate.format(cal_first.getTime());
+                    int viewdates = getDateCheck(currentdate,dates);
 
 
 
-                  if(viewdates != 0) {
-                      int values = getDateCheck(firstDate, dates);
-                      Log.d(TAG, "onItemClick: " + values);
-                      if (firstDate.equals(dates)){
-                          values = 0;
-                      }
-                      if(status) {
+                    if(viewdates != 0) {
+                        int values = getDateCheck(firstDate, dates);
+                        Log.d(TAG, "onItemClick: " + values);
+                        if (firstDate.equals(dates)){
+                            values = 0;
+                        }
+                        if(status) {
 
-                          dateAfter10Days = date10(dates,data);
-                        //  firstDate = currentdate;
-                          seconDate = dateAfter10Days;
-                          firstDate = dates;
-                          firstDatev1 = firstDate;
-                          seconDatev1 = seconDate  ;
-                          itemClicked.calanderIItemClicked(firstDate, seconDate, false);
-                          firstDate = "";
-                          seconDate = "";
-                      }else if (values == 1) {
-                          seconDate = dates;
-                          firstDatev1 = firstDate;
-                          seconDatev1 = seconDate  ;
-                          itemClicked.calanderIItemClicked(firstDate, seconDate, true);
-                          firstDate = "";
-                          seconDate = "";
+                            dateAfter10Days = date10(dates,data);
+                            //  firstDate = currentdate;
+                            selectDate = true;
+                            seconDate = dateAfter10Days;
+                            firstDate = dates;
+                            firstDatev1 = firstDate;
+                            seconDatev1 = seconDate  ;
+                            itemClicked.calanderIItemClicked(firstDate, seconDate, false);
+                            firstDate = "";
+                            seconDate = "";
+                        }else if (values == 1) {
+                            seconDate = dates;
+                            firstDatev1 = firstDate;
+                            seconDatev1 = seconDate  ;
+                            selectDate = true;
+                            itemClicked.calanderIItemClicked(firstDate, seconDate, true);
+                            firstDate = "";
+                            seconDate = "";
 
-                      } else {
-                          if (listDaysRate != null)
-                              listDaysRate.clear();
-                          allEvents.clear();
-                          dateType = true;
-                          firstDate = dates;
-                          //setallevent(allEvents);
-                          setUpCalendarAdapter();
-                          selectDate = false;
-                          openRangePicker(firstDate, firstDate, false);
-                          itemClicked.calanderIItemClicked(firstDate, firstDate, false);
+                        } else {
+                            if (listDaysRate != null)
+                                listDaysRate.clear();
+                            allEvents.clear();
+                            dateType = true;
+                            firstDate = dates;
+                            selectDate = false;
+                            //setallevent(allEvents);
+                            setUpCalendarAdapter();
+                            selectDate = false;
+                            openRangePicker(firstDate, firstDate, false);
+                            itemClicked.calanderIItemClicked(firstDate, firstDate, false);
 
-                      }
+                        }
 
-                  }else {
-                      Toast.makeText(context,"please select valid date",Toast.LENGTH_LONG).show();
-                  }
+                    }else {
+                        Toast.makeText(context,"please select valid date",Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+
+
             }
         });
 
@@ -321,22 +330,72 @@ public class CalendarCustomView extends LinearLayout {
     public void setUpCalendarAdapter(){
       //  dayValueInCells = new ArrayList<Date>();
 
-        dayValueData = new ArrayList<EventObjectsSecond>();
-        Calendar mCal = (Calendar)cal.clone();
-        mCal.set(Calendar.DAY_OF_MONTH, 1);
-        int firstDayOfTheMonth = mCal.get(Calendar.DAY_OF_WEEK) - 1;
-        mCal.add(Calendar.DAY_OF_MONTH, -firstDayOfTheMonth);
-        // while(dayValueInCells.size() < MAX_CALENDAR_COLUMN){
-        dayValueData.clear();
-        for (int k =0 ; k < MAX_CALENDAR_COLUMN; k++){
-            EventObjectsSecond eventObjectsTime = new EventObjectsSecond();
-            eventObjectsTime.setDate(mCal.getTime());
-            eventObjectsTime.setMessage("");
-            dayValueData.add(eventObjectsTime);
-            mCal.add(Calendar.DAY_OF_MONTH, 1);
-            int u = mCal.getTime().getDay();
+//        dayValueData = new ArrayList<EventObjectsSecond>();
+//        Calendar mCal = (Calendar)cal.clone();
+//        mCal.set(Calendar.DAY_OF_MONTH, 1);
+//        int firstDayOfTheMonth = mCal.get(Calendar.DAY_OF_WEEK) - 1;
+//        mCal.add(Calendar.DAY_OF_MONTH, -firstDayOfTheMonth);
+//        // while(dayValueInCells.size() < MAX_CALENDAR_COLUMN){
+//        dayValueData.clear();
+//        for (int k =0 ; k < MAX_CALENDAR_COLUMN; k++){
+//            EventObjectsSecond eventObjectsTime = new EventObjectsSecond();
+//            eventObjectsTime.setDate(mCal.getTime());
+//            eventObjectsTime.setMessage("");
+//            dayValueData.add(eventObjectsTime);
+//            mCal.add(Calendar.DAY_OF_MONTH, 1);
+//            int u = mCal.getTime().getDay();
+//
+//        }
+//
 
+
+        dayValueData = new ArrayList<>();
+
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        Calendar mCal = (Calendar) cal.clone();
+        int currentMonth = cal.get(Calendar.MONTH);
+
+        mCal.set(Calendar.DAY_OF_MONTH, 1);
+        int firstDayOfMonth = mCal.get(Calendar.DAY_OF_WEEK) - 1;
+        mCal.add(Calendar.DAY_OF_MONTH, -firstDayOfMonth);
+
+        for (int i = 0; i < MAX_CALENDAR_COLUMN; i++) {
+
+            EventObjectsSecond cell = new EventObjectsSecond();
+            cell.setDate(mCal.getTime());
+
+            Calendar cellCal = Calendar.getInstance();
+            cellCal.setTime(mCal.getTime());
+            cellCal.set(Calendar.HOUR_OF_DAY, 0);
+            cellCal.set(Calendar.MINUTE, 0);
+            cellCal.set(Calendar.SECOND, 0);
+            cellCal.set(Calendar.MILLISECOND, 0);
+
+            // 🔹 Previous / Next month detection
+            boolean isOtherMonth = cellCal.get(Calendar.MONTH) != currentMonth;
+            cell.setOtherMonth(isOtherMonth);
+
+            // 🔹 Past date disable
+            if (cellCal.before(today)) {
+                cell.setDisabled(true);
+            } else {
+                cell.setDisabled(false);
+            }
+
+            cell.setMessage("");
+            dayValueData.add(cell);
+            mCal.add(Calendar.DAY_OF_MONTH, 1);
         }
+
+
+
+        //
+
         Log.d(TAG, "Number of date " + dayValueData.size());
         String sDate = formatter.format(cal.getTime());
         currentDate.setText(sDate);
