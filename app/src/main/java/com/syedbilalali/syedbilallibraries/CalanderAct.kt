@@ -56,14 +56,14 @@ class CalanderAct : AppCompatActivity() {
 
             val startDate = Calendar.getInstance()
             val formatterdate = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-            startDate.time = formatterdate.parse("17/04/2023")
+            startDate.time = formatterdate.parse("16/12/2025")
 
             val endDate = Calendar.getInstance()
             val formatterdatev1 = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-            endDate.time = formatterdatev1.parse("22/04/2023")
+            endDate.time = formatterdatev1.parse("20/12/2025")
 
             var dayName = EventObjectsTime()
-            dayName.dayname = "Saturday"
+            dayName.dayname = "Tuesday"
             dayName.rates = "19.0"
             dayName.date = startDate.time
 
@@ -74,6 +74,11 @@ class CalanderAct : AppCompatActivity() {
             dayName1.rates = "21"
             dayName1.date = endDate.time
 
+            var dayName3 = EventObjectsTime()
+            dayName3.dayname = "Thursday"
+            dayName3.rates = "21"
+            dayName3.date = endDate.time
+            listDaysRate.add(dayName3)
             listDaysRate.add(dayName1)
 
         }
@@ -81,11 +86,11 @@ class CalanderAct : AppCompatActivity() {
 
 
 
-        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,"16/12/2025","20/12/2025",true,5);
-        itemClicked.calanderIItemClicked(
-            "16/12/2025","20/12/2025",
-            false
-        )
+        mView!!.setGridCellClickEvents(listDaysRate, itemClicked ,"16/12/2025","20/12/2025",false,5);
+//        itemClicked.calanderIItemClicked(
+//            "16/12/2025","20/12/2025",
+//            true
+//        )
 
         //custom indicator text
 //        val percent_indicator: IndicatorSeekBar =
@@ -125,7 +130,7 @@ class CalanderAct : AppCompatActivity() {
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
 
-                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true)
+                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,false)
 
                   //  mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
 

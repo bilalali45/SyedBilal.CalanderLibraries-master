@@ -147,7 +147,8 @@ public class GridAdapter extends ArrayAdapter  {
                 final int currentdascal = cal.get(Calendar.DAY_OF_MONTH);
                 final int currentyearv1 = cal.get(Calendar.YEAR);
 
-
+                cellNumber.setTextColor(Color.BLACK);
+                cellNumber.setVisibility(View.VISIBLE);
 
                 if (displayMonth == currentMonth && displayYear == currentyearv1) {
                     if(displayMonth >= currentMonthcal) {
@@ -389,7 +390,7 @@ public class GridAdapter extends ArrayAdapter  {
 
                         }
                     }else {
-                        cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+                      //  cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
 
                     }
 
@@ -401,12 +402,7 @@ public class GridAdapter extends ArrayAdapter  {
 
 
 
-                }else {
-
-                    cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
-
                 }
-
                 if(previousposition != 0)
                     if(previousposition == position){
                     }
