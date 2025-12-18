@@ -138,8 +138,10 @@ public class GridAdapter extends ArrayAdapter  {
                         ContextCompat.getColor(getContext(), R.color.lightgrey)
                 );
                 cellNumber.setBackgroundColor(Color.TRANSPARENT);
-                cellNumber.setVisibility(View.GONE);
-               // return convertView;
+                //cellNumber.setVisibility(View.GONE);
+                cellNumber.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgrey));
+
+                // return convertView;
             }else {
 
                 Calendar cal = Calendar.getInstance();
@@ -260,7 +262,7 @@ public class GridAdapter extends ArrayAdapter  {
                                 }
 
                                 if (countValueStatus) {
-                                    callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate);
+                                    callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate,displayYear);
                                 }
                             }
 
@@ -291,8 +293,10 @@ public class GridAdapter extends ArrayAdapter  {
                             firstDateCal.setTime(firstDateView);
                             String day = formatter.format(firstDateCal.getTime());
                             final int month = firstDateCal.get(Calendar.MONTH) + 1;
+                            int year  = firstDateCal.get(Calendar.YEAR); // 👈 year
 
-                            if (day.equals(sDate) && month == displayMonth) {
+
+                            if (day.equals(sDate) && month == displayMonth && year ==displayYear) {
                                 lv.setBackgroundResource(R.drawable.greencircle);
                                 cellNumber.setTextColor(Color.WHITE);
 //                                 lv1.setBackgroundColor(Color.GRAY);
@@ -335,9 +339,10 @@ public class GridAdapter extends ArrayAdapter  {
                             secondDateCal.setTime(secondDateView);
                             String day = formatter.format(secondDateCal.getTime());
                             final int month = secondDateCal.get(Calendar.MONTH) + 1;
+                            int year  = secondDateCal.get(Calendar.YEAR); // 👈 year
 
 
-                            if (day.equals(sDate) && month == displayMonth) {
+                            if (day.equals(sDate) && month == displayMonth && displayYear == year) {
 
 
                                 if (selectDate) {
@@ -386,7 +391,7 @@ public class GridAdapter extends ArrayAdapter  {
 
                         if (countValueStatus) {
 
-                            callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate);
+                            callrecycler(null, null, eventsFirstLast, lv, cellNumber, dayValue, null, sDate, displayMonth, maincell, calanderrate,displayYear);
 
                         }
                     }else {
@@ -451,14 +456,15 @@ public class GridAdapter extends ArrayAdapter  {
         notifyDataSetChanged();
     }
     @SuppressLint("ResourceType")
-    private void callrecycler(LinearLayout lv1, LinearLayout lv2, ArrayList<EventObjects> eventsFirstLast, RelativeLayout lv, TextView cellNumber, int dayValue, View eventIndicator, String date, int displayMonth, LinearLayout maincell, TextView calanderrate) {
+    private void callrecycler(LinearLayout lv1, LinearLayout lv2, ArrayList<EventObjects> eventsFirstLast, RelativeLayout lv, TextView cellNumber, int dayValue, View eventIndicator, String date, int displayMonth, LinearLayout maincell, TextView calanderrate, int displayyear) {
         for (int k =0 ; k < eventsFirstLast.size(); k++){
           String  day = formatter.format(eventsFirstLast.get(k).getDate().getTime());
 
            Calendar dateCalv1 = Calendar.getInstance();
             dateCalv1.setTime(eventsFirstLast.get(k).getDate());
             final int displayMonthv1 = dateCalv1.get(Calendar.MONTH) + 1;
-                if (day.equals(date) && displayMonthv1 == displayMonth) {
+            int displayYearv1  = dateCalv1.get(Calendar.YEAR);
+            if (day.equals(date) && displayMonthv1 == displayMonth && displayYearv1 == displayyear) {
                          maincell.setBackgroundColor(Color.parseColor("#E6E6E6"));
                         if(!eventsFirstLast.get(k).getMessage().equals("")){}
 

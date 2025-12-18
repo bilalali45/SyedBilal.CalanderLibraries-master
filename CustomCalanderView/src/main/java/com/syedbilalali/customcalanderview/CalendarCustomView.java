@@ -320,7 +320,7 @@ public class CalendarCustomView extends LinearLayout {
             firstDate = Firstdate;
             firstDatev1 = firstDate;
             seconDatev1 = seconDate  ;
-            //itemClicked.calanderIItemClicked(firstDate, seconDate, false);
+                //itemClicked.calanderIItemClicked(firstDate, seconDate, false);
             firstDate = "";
             seconDate = "";
           //  itemClicked.calanderIItemClicked(firstDate, firstDate, false);
