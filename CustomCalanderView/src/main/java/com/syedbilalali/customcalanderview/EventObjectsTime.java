@@ -1,10 +1,22 @@
 package com.syedbilalali.customcalanderview;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class EventObjectsTime {
     private String dayname;
     private String Rates;
+
+    public ArrayList<Hourslots> getHourslots() {
+        return hourslots;
+    }
+
+    public void setHourslots(ArrayList<Hourslots> hourslots) {
+        this.hourslots = hourslots;
+    }
+
+    private ArrayList<Hourslots> hourslots = new ArrayList<>();
+
 
     public int getDescount() {
         return descount;
