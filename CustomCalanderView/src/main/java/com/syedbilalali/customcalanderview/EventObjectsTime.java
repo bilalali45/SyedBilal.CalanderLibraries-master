@@ -7,6 +7,25 @@ public class EventObjectsTime {
     private String dayname;
     private String Rates;
 
+    public String getPeercentage() {
+        return peercentage;
+    }
+
+    public void setPeercentage(String peercentage) {
+        this.peercentage = peercentage;
+    }
+
+    public String getHoursRate() {
+        return hoursRate;
+    }
+
+    public void setHoursRate(String hoursRate) {
+        this.hoursRate = hoursRate;
+    }
+
+    private String peercentage;
+    private String hoursRate;
+
     public ArrayList<Hourslots> getHourslots() {
         return hourslots;
     }
