@@ -233,13 +233,13 @@ class CalanderAct : AppCompatActivity() {
 
 
 
-                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true,0)
+                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,true,2)
 
                 }else{
                     firstdate = firstDate!!;
                     seconddate = secondDate!!
 
-                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,false,0)
+                    mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate,false,2)
 
                   //  mView!!.setArrayDataValue(listDaysRate,firstDate,secondDate)
 

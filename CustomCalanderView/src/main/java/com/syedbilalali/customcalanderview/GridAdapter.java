@@ -182,7 +182,9 @@ public class GridAdapter extends ArrayAdapter  {
 //                                 lv1.setVisibility(View.VISIBLE);
                                         if (!firstRate.equals("")) {
                                             calanderrate.setVisibility(View.VISIBLE);
-                                            calanderrate.setText(String.valueOf(numberFormat.format(Double.parseDouble(firstRate))));
+
+                                                calanderrate.setText(String.valueOf(numberFormat.format(Double.parseDouble(firstRate))));
+
                                             //calanderrate.setText(firstRate);
                                             calanderrate.setTextColor(Color.WHITE);
                                         }
@@ -258,7 +260,11 @@ public class GridAdapter extends ArrayAdapter  {
                                     if (mDate.getDescount() < 0) {
                                         calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
                                     }
-                                    calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+                                    int value = Integer.parseInt(mDate.getMessage());
+                                    if(value > 0) {
+                                        calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+
+                                    }
                                 }
 
                                 if (countValueStatus) {
@@ -386,7 +392,10 @@ public class GridAdapter extends ArrayAdapter  {
                             if (mDate.getDescount() < 0) {
                                 calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
                             }
-                            calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+                            int value = Integer.parseInt(mDate.getMessage());
+                            if(value > 0) {
+                                calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+                            }
                         }
 
                         if (countValueStatus) {
