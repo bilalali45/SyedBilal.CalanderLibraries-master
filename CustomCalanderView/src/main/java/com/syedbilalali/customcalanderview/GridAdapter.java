@@ -263,6 +263,7 @@ public class GridAdapter extends ArrayAdapter  {
                                     int value = Integer.parseInt(mDate.getMessage());
                                     if(value > 0) {
                                         calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+                                        calanderrate.setVisibility(View.GONE);
 
                                     }
                                 }
@@ -395,6 +396,8 @@ public class GridAdapter extends ArrayAdapter  {
                             int value = Integer.parseInt(mDate.getMessage());
                             if(value > 0) {
                                 calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
+                                calanderrate.setVisibility(View.GONE);
+
                             }
                         }
 
