@@ -7,6 +7,34 @@ public class EventObjectsTime {
     private String dayname;
     private String Rates;
 
+    public String getSelfpickpeercentage() {
+        return selfpickpeercentage;
+    }
+
+    public void setSelfpickpeercentage(String selfpickpeercentage) {
+        this.selfpickpeercentage = selfpickpeercentage;
+    }
+
+    public String getTotalChargeValue() {
+        return totalChargeValue;
+    }
+
+    public void setTotalChargeValue(String totalChargeValue) {
+        this.totalChargeValue = totalChargeValue;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    private String selfpickpeercentage;
+    private String totalChargeValue;
+    private boolean active;
+
     public String getPeercentage() {
         return peercentage;
     }

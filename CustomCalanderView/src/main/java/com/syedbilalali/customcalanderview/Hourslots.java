@@ -9,6 +9,36 @@ public class Hourslots {
 
     private String to_time = "";
 
+
+    private String self_from_time = "";
+
+    public String getSelf_from_time() {
+        return self_from_time;
+    }
+
+    public void setSelf_from_time(String self_from_time) {
+        this.self_from_time = self_from_time;
+    }
+
+    public String getSelf_to_time() {
+        return self_to_time;
+    }
+
+    public void setSelf_to_time(String self_to_time) {
+        this.self_to_time = self_to_time;
+    }
+
+    public String getSelf_hour_slot_id() {
+        return self_hour_slot_id;
+    }
+
+    public void setSelf_hour_slot_id(String self_hour_slot_id) {
+        this.self_hour_slot_id = self_hour_slot_id;
+    }
+
+    private String self_to_time = "";
+
+    private String self_hour_slot_id = "";
     public Hourslots() {
     }
 
