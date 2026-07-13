@@ -9,7 +9,15 @@ public class Hourslots {
 
     private String to_time = "";
 
+    public Double getRates() {
+        return rates;
+    }
 
+    public void setRates(Double rates) {
+        this.rates = rates;
+    }
+
+    private Double rates = 0.0;
     private String self_from_time = "";
 
     public String getSelf_from_time() {

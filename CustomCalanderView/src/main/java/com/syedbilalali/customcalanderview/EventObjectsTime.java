@@ -64,6 +64,15 @@ public class EventObjectsTime {
 
     private ArrayList<Hourslots> hourslots = new ArrayList<>();
 
+    public ArrayList<Hourslots> getSelfhourslots() {
+        return Selfhourslots;
+    }
+
+    public void setSelfhourslots(ArrayList<Hourslots> selfhourslots) {
+        Selfhourslots = selfhourslots;
+    }
+
+    private ArrayList<Hourslots> Selfhourslots = new ArrayList<>();
 
     public int getDescount() {
         return descount;
