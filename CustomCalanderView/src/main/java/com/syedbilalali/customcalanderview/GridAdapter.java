@@ -260,7 +260,8 @@ public class GridAdapter extends ArrayAdapter  {
                                     if (mDate.getDescount() < 0) {
                                         calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
                                     }
-                                    int value = Integer.parseInt(mDate.getMessage());
+//                                    int value = Integer.parseInt(mDate.getMessage());
+                                    int value = (int) Double.parseDouble(mDate.getMessage());
                                     if(value > 0) {
                                         calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
                                         calanderrate.setVisibility(View.VISIBLE);
@@ -395,7 +396,8 @@ public class GridAdapter extends ArrayAdapter  {
                             if (mDate.getDescount() < 0) {
                                 calanderrate.setTextColor(ContextCompat.getColor(getContext(), R.color.lightgreen));
                             }
-                            int value = Integer.parseInt(mDate.getMessage());
+                           // int value = Integer.parseInt(mDate.getMessage());
+                            int value = (int) Double.parseDouble(mDate.getMessage());
                             if(value > 0) {
                                 calanderrate.setText(numberFormat.format(Double.parseDouble(mDate.getMessage())));
                                 calanderrate.setVisibility(View.VISIBLE);
