@@ -74,6 +74,17 @@ public class EventObjectsTime {
 
     private ArrayList<Hourslots> Selfhourslots = new ArrayList<>();
 
+    public ArrayList<Hourslots> getHourslotsubscrption() {
+        return hourslotsubscrption;
+    }
+
+    public void setHourslotsubscrption(ArrayList<Hourslots> hourslotsubscrption) {
+        this.hourslotsubscrption = hourslotsubscrption;
+    }
+
+    private ArrayList<Hourslots> hourslotsubscrption = new ArrayList<>();
+
+
     public ArrayList<Hourslots> getSubscriptionHourSlots() {
         return subscriptionHourSlots;
     }
