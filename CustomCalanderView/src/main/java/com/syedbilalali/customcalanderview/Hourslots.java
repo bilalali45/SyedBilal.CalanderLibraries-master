@@ -18,6 +18,25 @@ public class Hourslots {
     }
 
     private Double rates = 0.0;
+
+    public Double getSelfpickSubrates() {
+        return selfpickSubrates;
+    }
+
+    public void setSelfpickSubrates(Double selfpickSubrates) {
+        this.selfpickSubrates = selfpickSubrates;
+    }
+
+    public Double getRentalSubrates() {
+        return rentalSubrates;
+    }
+
+    public void setRentalSubrates(Double rentalSubrates) {
+        this.rentalSubrates = rentalSubrates;
+    }
+
+    private Double selfpickSubrates = 0.0;
+    private Double rentalSubrates = 0.0;
     private String self_from_time = "";
 
     public String getSelf_from_time() {
