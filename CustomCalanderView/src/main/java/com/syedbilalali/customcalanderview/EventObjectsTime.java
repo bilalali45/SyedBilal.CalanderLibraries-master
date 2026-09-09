@@ -16,6 +16,15 @@ public class EventObjectsTime {
     }
 
     private Double selfpickSubrates = 0.0;
+
+    public Double getRentalSubrates() {
+        return rentalSubrates;
+    }
+
+    public void setRentalSubrates(Double rentalSubrates) {
+        this.rentalSubrates = rentalSubrates;
+    }
+
     private Double rentalSubrates = 0.0;
 
     public String getSelfpickpeercentage() {
