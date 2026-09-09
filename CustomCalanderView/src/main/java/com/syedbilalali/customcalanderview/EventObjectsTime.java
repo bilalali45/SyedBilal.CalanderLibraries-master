@@ -7,6 +7,17 @@ public class EventObjectsTime {
     private String dayname;
     private String Rates;
 
+    public Double getSelfpickSubrates() {
+        return selfpickSubrates;
+    }
+
+    public void setSelfpickSubrates(Double selfpickSubrates) {
+        this.selfpickSubrates = selfpickSubrates;
+    }
+
+    private Double selfpickSubrates = 0.0;
+    private Double rentalSubrates = 0.0;
+
     public String getSelfpickpeercentage() {
         return selfpickpeercentage;
     }
